@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>APPLICATION</title>
+
+    <style>
+        body {
+            background-color: rgb(217, 252, 194);
+        }
+        button {box-shadow: 5px 5px rgb(173,201,155);}
+        @media only screen and (min-width: 769px) {
+            #game {}
+
+            #move {
+                text-align: center;
+                width: 620px;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.9, 0.9);
+                position: relative;
+                left: -100px;
+                top: -20px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -120px;
+                top: -30px;
+            }
+        }
+
+        @media only screen and (max-width: 508px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.8, 0.8);
+                position: relative;
+                left: -100px;
+                top: -50px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -120px;
+                top: -40px;
+            }
+        }
+
+        @media only screen and (max-width: 460px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.7, 0.7);
+                position: relative;
+                left: -100px;
+                top: -70px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -120px;
+                top: -100px;
+            }
+        }
+
+        @media only screen and (max-width: 412px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.6, 0.6);
+                position: relative;
+                left: -140px;
+                top: -90px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -130px;
+                top: -150px;
+            }
+        }
+
+        @media only screen and (max-width: 375px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.5, 0.5);
+                position: relative;
+                left: -190px;
+                top: -100px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -180px;
+                top: -180px;
+            }
+        }
+
+        @media only screen and (max-width: 260px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.4, 0.4);
+                position: relative;
+                left: -220px;
+                top: -110px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -200px;
+                top: -200px;
+            }
+        }
+
+        @media only screen and (max-width: 200px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.3, 0.3);
+                position: relative;
+                left: -235px;
+                top: -120px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -240px;
+                top: -230px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--It is allowed to modify the game. Changing the number after the # will change colors -->
+    <div style="width:625px;margin-left:auto;margin-right:auto;margin-top:1vw;" class="disable-dbl-tap-zoom"><br>
+        <div id="game">
+            <canvas id="myCanvas" width="620" height="320" style="background-color:white;"></canvas>
+            <audio id="son">  <source src="bingo.mp3" type="audio/mpeg"></audio>
+            <audio id="theend" ><source src="endsound.mp3" type="audio/mpeg"></audio>
+            <script>
+                function fxx() {son.play();}
+                function fend(){sond.play();}
+                var son = document.getElementById("son");
+                var sond = document.getElementById("theend");
+                var canvas = document.getElementById("myCanvas"),
+                    ctx = canvas.getContext("2d"),
+                    x = 340,
+                    y = 40,
+                    a = 0,
+                    b = 0,
+                    c = 0,
+                    d = 0,
+                    e = 0,
+                    f = 0;
+
+                function star() {
+                    ctx.beginPath();
+                    ctx.moveTo(x, y);
+                    ctx.lineTo(x + 25, y);
+                    ctx.lineTo(x + 40, y - 20);
+                    ctx.lineTo(x + 55, y);
+                    ctx.lineTo(x + 80, y);
+                    ctx.lineTo(x + 65, y + 20);
+                    ctx.lineTo(x + 80, y + 40);
+                    ctx.lineTo(x + 55, y + 40);
+                    ctx.lineTo(x + 40, y + 60);
+                    ctx.lineTo(x + 25, y + 40);
+                    ctx.lineTo(x, y + 40);
+                    ctx.lineTo(x + 15, y + 20);
+                    ctx.lineTo(x, y);
+                    ctx.lineTo(x + 25, y);
+                    ctx.lineTo(x + 25, y);
+                    ctx.lineTo(x + 25, y);
+                    ctx.lineTo(x + 25, y);
+                    ctx.lineTo(x + 25, y);
+                    ctx.lineTo(x, y);
+                    ctx.fillStyle = "#ffff4d";
+                    ctx.fill();
+                    ctx.closePath();
+                }
+
+                function square() {
+                    ctx.beginPath();
+                    ctx.rect(a, b, 80, 80);
+                    ctx.fillStyle = "#990033";
+                    ctx.fill();
+                    ctx.closePath();
+                }
+
+                function bol() {
+                    ctx.beginPath();
+                    ctx.arc(c, d, 40, 0, 2 * Math.PI);
+                    ctx.fillStyle = "#6666ff";
+                    ctx.fill();
+                    ctx.closePath();
+                }
+
+                function tri() {
+                    ctx.beginPath();
+                    ctx.moveTo(e, f);
+                    ctx.lineTo(e + 50, f - 80);
+                    ctx.lineTo(e + 100, f);
+                    ctx.lineTo(e, f);
+                    ctx.stroke();
+                    ctx.fillStyle = "#4dffb8";
+                    ctx.fill();
+                    ctx.closePath();
+                }
+                star();
+
+                function lijnStar() {
+                    ctx.beginPath();
+                    ctx.strokeStyle = "#ffff4d";
+                    ctx.lineWidth = 5;
+                    ctx.moveTo(440, 250);
+                    ctx.lineTo(465, 250);
+                    ctx.lineTo(480, 230);
+                    ctx.lineTo(495, 250);
+                    ctx.lineTo(520, 250);
+                    ctx.lineTo(505, 270);
+                    ctx.lineTo(520, 290);
+                    ctx.lineTo(495, 290);
+                    ctx.lineTo(480, 310);
+                    ctx.lineTo(465, 290);
+                    ctx.lineTo(440, 290);
+                    ctx.lineTo(455, 270);
+                    ctx.lineTo(440, 250);
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+
+                function lijnSquare() {
+                    ctx.beginPath();
+                    ctx.strokeStyle = "#990033";
+                    ctx.strokeRect(100, 230, 80, 80);
+                    ctx.closePath();
+                }
+
+                function lijnBol() {
+                    ctx.beginPath();
+                    ctx.strokeStyle = "#6666ff";
+                    ctx.arc(250, 270, 40, 0, 2 * Math.PI);
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+
+                function lijnTri() {
+                    ctx.beginPath();
+                    ctx.strokeStyle = "#4dffb8";
+                    ctx.lineWidth = 5;
+                    ctx.moveTo(310, 310);
+                    ctx.lineTo(360, 230);
+                    ctx.lineTo(410, 310);
+                    ctx.lineTo(310, 310);
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+                lijnStar();
+                lijnSquare();
+                lijnTri();
+                lijnBol();
+
+                function moveup() {
+                    if (a == 0 && b == 0 && c == 0 && d == 0 && e == 0 && f == 0) {
+                        moveupStar();
+                    } else if (a == 0 && b == 0 && e == 0 && f == 0) {
+                        moveupBol();
+                    } else if (e == 0 && f == 0) {
+                        moveupSquare();
+                    } else {
+                        moveupTri();
+                    }
+                }
+
+                function movedown() {
+                    if (a == 0 && b == 0 && c == 0 && d == 0 && e == 0 && f == 0) {
+                        movedownStar();
+                    } else if (a == 0 && b == 0 && e == 0 && f == 0) {
+                        movedownBol();
+                    } else if (e == 0 && f == 0) {
+                        movedownSquare();
+                    } else {
+                        movedownTri();
+                    }
+                }
+
+                function moveleft() {
+                    if (a == 0 && b == 0 && c == 0 && d == 0 && e == 0 && f == 0) {
+                        moveleftStar();
+                    } else if (a == 0 && b == 0 && e == 0 && f == 0) {
+                        moveleftBol();
+                    } else if (e == 0 && f == 0) {
+                        moveleftSquare();
+                    } else {
+                        moveleftTri();
+                    }
+                }
+
+                function moveright() {
+                    if (a == 0 && b == 0 && c == 0 && d == 0 && e == 0 && f == 0) {
+                        moverightStar();
+                    } else if (a == 0 && b == 0 && e == 0 && f == 0) {
+                        moverightBol();
+                    } else if (e == 0 && f == 0) {
+                        moverightSquare();
+                    } else {
+                        moverightTri();
+                    }
+                }
+
+                function moveupStar() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    y += -20;
+                    if (x >= 430 && x <= 450 && y >= 240 && y <= 260) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        x = 440;
+                        y = 250;
+                        fxx();
+                        lijnSquare();
+                        lijnTri();
+                        lijnBol();
+                        c = 320, d = 50;
+                        bol();
+                    }
+                    star();
+                }
+
+                function moveupBol() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    d += -20;
+                    if (c >= 240 && c <= 260 && d >= 260 && d <= 280) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        c = 250;
+                        y = 270;
+                        fxx();
+                        lijnSquare();
+                        lijnTri();
+                        star();
+                        a = 350, b = 40;
+                        square();
+                    }
+                    bol();
+                }
+
+                function moveupSquare() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    b += -20;
+                    if (a >= 90 && a <= 110 && b >= 220 && b <= 240) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        a = 100;
+                        b = 230;
+                        fxx();
+                        lijnTri();
+                        star();
+                        bol();
+                        e = 300, f = 100;
+                        tri();
+                    }
+                    square();
+                }
+
+                function moveupTri() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    f += -20;
+                    if (e >= 300 && e <= 320 && f >= 300 && f <= 320) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        e = 310;
+                        f = 310;
+                        fxx();
+                        star();
+                        bol();
+                        square();
+                    }
+                    tri();
+                }
+
+                function movedownStar() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    y += 20;
+                    if (x >= 430 && x <= 530 && y >= 240 && y <= 260) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        x = 440;
+                        y = 250;
+                        fxx();
+                        lijnSquare();
+                        lijnTri();
+                        lijnBol();
+                        c = 320, d = 50;
+                        bol();
+                    }
+                    star();
+                }
+
+                function movedownBol() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    d += 20;
+                    if (c >= 240 && c <= 260 && d >= 260 && d <= 280) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        c = 250;
+                        d = 270;
+                        fxx();
+                        lijnSquare();
+                        lijnTri();
+                        star();
+                        a = 350, b = 40;
+                        square();
+                    }
+                    bol();
+                }
+
+                function movedownSquare() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    b += 20;
+                    if (a >= 90 && a <= 110 && b >= 220 && b <= 240) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        a = 100;
+                        b = 230;
+                        fxx();
+                        lijnTri();
+                        star();
+                        bol();
+                        e = 300, f = 100;
+                        tri();
+                    }
+                    square();
+                }
+
+                function movedownTri() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    f += 20;
+                    if (e >= 300 && e <= 320 && f >= 300 && f <= 320) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        e = 310;
+                        f = 310;
+                        fxx();
+                        star();
+                        bol();
+                        square();
+                    }
+                    tri();
+                }
+
+                function moveleftStar() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    x += -20;
+                    if (x >= 430 && x <= 530 && y >= 240 && y <= 260) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        x = 440;
+                        y = 250;
+                        fxx();
+                        lijnSquare();
+                        lijnTri();
+                        lijnBol();
+                        c = 320, d = 50;
+                        bol();
+                    }
+                    star();
+                }
+
+                function moveleftBol() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    c += -20;
+                    if (c >= 240 && c <= 260 && d >= 260 && d <= 280) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        c = 250;
+                        d = 270;
+                        fxx();
+                        lijnSquare();
+                        lijnTri();
+                        star();
+                        a = 350, b = 40;
+                        square();
+                    }
+                    bol();
+                }
+
+                function moveleftSquare() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    a += -20;
+                    if (a >= 90 && a <= 110 && b >= 220 && b <= 240) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        a = 100;
+                        b = 230;
+                        fxx();
+                        lijnTri();
+                        star();
+                        bol();
+                        e = 300, f = 100;
+                        tri();
+                    }
+                    square();
+                }
+
+                function moveleftTri() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    e += -20;
+                    if (e >= 300 && e <= 320 && f >= 300 && f <= 320) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        e = 310;
+                        f = 310;
+                        fxx();
+                        star();
+                        bol();
+                        square();
+                    }
+                    tri();
+                }
+
+                function moverightStar() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    x += 20;
+                    if (x >= 430 && x <= 530 && y >= 240 && y <= 260) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        x = 440;
+                        y = 250;
+                        fxx();
+                        lijnSquare();
+                        lijnTri();
+                        lijnBol();
+                        c = 320, d = 50;
+                        bol();
+                    }
+                    star();
+                }
+
+                function moverightBol() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    c += 20;
+                    if (c >= 240 && c <= 260 && d >= 260 && d <= 280) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        c = 250;
+                        d = 270;
+                        fxx();
+                        lijnSquare();
+                        lijnTri();
+                        star();
+                        a = 350, b = 40;
+                        square();
+                    }
+                    bol();
+                }
+
+                function moverightSquare() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    a += 20;
+                    if (a >= 90 && a <= 110 && b >= 220 && b <= 240) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        a = 100;
+                        b = 230;
+                        fxx();
+                        lijnTri();
+                        star();
+                        bol();
+                        e = 300, f = 100;
+                        tri();
+                    }
+                    square();
+                }
+
+                function moverightTri() {
+                    ctx.clearRect(0, 0, 680, 227);
+                    e += 20;
+                    if (e >= 300 && e <= 320 && f >= 300 && f <= 320) {
+                        ctx.clearRect(0, 220, 680, 170);
+                        e = 210;
+                        f = 310;
+                        fxx();
+                        star();
+                        bol();
+                        square();
+                    }
+                    tri();
+                }
+            </script>
+        </div>
+        <br>
+        <div id="move">
+                    <button onclick="moveup()">&#8679; UP &#8679;</button><br><br>
+                    <button onclick="moveleft()">&#8678; LEFT</button>
+                    <button onclick="moveright()">RIGHT &#8680;</button><br><br>
+                    <button onclick="movedown()">&#8681; DOWN &#8681;</button>
+        </div>
+
+</body>
+
+</html>
