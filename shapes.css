@@ -1,0 +1,168 @@
+<style>
+        body {
+            background-color: rgb(217, 252, 194);
+        }
+        button {box-shadow: 5px 5px rgb(173,201,155);}
+        @media only screen and (min-width: 769px) {
+            #game {}
+
+            #move {
+                text-align: center;
+                width: 620px;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.9, 0.9);
+                position: relative;
+                left: -100px;
+                top: -20px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -120px;
+                top: -30px;
+            }
+        }
+
+        @media only screen and (max-width: 508px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.8, 0.8);
+                position: relative;
+                left: -100px;
+                top: -50px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -120px;
+                top: -40px;
+            }
+        }
+
+        @media only screen and (max-width: 460px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.7, 0.7);
+                position: relative;
+                left: -100px;
+                top: -70px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -120px;
+                top: -100px;
+            }
+        }
+
+        @media only screen and (max-width: 412px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.6, 0.6);
+                position: relative;
+                left: -140px;
+                top: -90px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -130px;
+                top: -150px;
+            }
+        }
+
+        @media only screen and (max-width: 375px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.5, 0.5);
+                position: relative;
+                left: -190px;
+                top: -100px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -180px;
+                top: -180px;
+            }
+        }
+
+        @media only screen and (max-width: 260px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.4, 0.4);
+                position: relative;
+                left: -220px;
+                top: -110px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -200px;
+                top: -200px;
+            }
+        }
+
+        @media only screen and (max-width: 200px) {
+            .disable-dbl-tap-zoom {
+                touch-action: manipulation;
+            }
+
+            #game {
+                transform: scale(0.3, 0.3);
+                position: relative;
+                left: -235px;
+                top: -120px;
+            }
+
+            #move {
+                text-align: center;
+                width: 100vw;
+                margin: auto;
+                position: relative;
+                left: -240px;
+                top: -230px;
+            }
+        }
+    </style>
